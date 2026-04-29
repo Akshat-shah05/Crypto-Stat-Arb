@@ -11,29 +11,17 @@ PLOTS_DIR = ROOT / "plots"
 for d in [RAW_DIR, PROCESSED_DIR, RESULTS_DIR, PLOTS_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
-EXCHANGE_ID = "coinbase"
+EXCHANGE_ID = "binance"
+SYMBOLS = [
+    "BTC/USDT", "ETH/USDT", "SOL/USDT", "XRP/USDT", "ADA/USDT",
+    "DOGE/USDT", "AVAX/USDT", "LINK/USDT", "LTC/USDT", "BCH/USDT",
+    "DOT/USDT", "UNI/USDT", "ETC/USDT", "FIL/USDT", "NEAR/USDT"
+]
 TIMEFRAME = "1h"
 
 START_DATE = "2021-01-01T00:00:00Z"
 END_DATE = "2025-01-01T00:00:00Z"
 
-SYMBOLS = [
-    "BTC/USD",
-    "ETH/USD",
-    "SOL/USD",
-    "XRP/USD",
-    "ADA/USD",
-    "DOGE/USD",
-    "AVAX/USD",
-    "LINK/USD",
-    "LTC/USD",
-    "BCH/USD",
-    "DOT/USD",
-    "UNI/USD",
-    "ETC/USD",
-    "FIL/USD",
-    "NEAR/USD",
-]
 
 MARKET_ORDER_COST_BPS = 20
 LIMIT_ORDER_COST_BPS = 7
