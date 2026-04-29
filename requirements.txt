@@ -1,0 +1,8 @@
+# requirements.txt
+ccxt
+pandas
+numpy
+matplotlib
+statsmodels
+pyarrow
+tqdm
