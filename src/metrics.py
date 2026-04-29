@@ -43,7 +43,11 @@ def summarize_returns(
     }
 
 
-def btc_alpha_beta(strategy_results: pd.DataFrame, panel: pd.DataFrame, btc_symbol="BTC/USD"):
+def btc_alpha_beta(
+    strategy_results: pd.DataFrame,
+    panel: pd.DataFrame,
+    btc_symbol: str = "BTC/USDT",
+) -> dict:
     btc = panel[panel["symbol"] == btc_symbol][
         ["timestamp", "fwd_simple_ret_1h"]
     ].rename(columns={"fwd_simple_ret_1h": "btc_return"})
@@ -53,6 +57,14 @@ def btc_alpha_beta(strategy_results: pd.DataFrame, panel: pd.DataFrame, btc_symb
         on="timestamp",
         how="inner",
     ).dropna()
+
+    if len(data) < 2:
+        return {
+            "alpha_per_period": np.nan,
+            "beta_to_btc": np.nan,
+            "alpha_t_stat": np.nan,
+            "r_squared": np.nan,
+        }
 
     y = data["net_return"]
     X = sm.add_constant(data["btc_return"])
